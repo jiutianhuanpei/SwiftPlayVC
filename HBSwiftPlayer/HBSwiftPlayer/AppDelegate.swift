@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         let rootVC = RootViewController()
-        let naVC = UINavigationController(rootViewController: rootVC)
+        let naVC = RootNaVC(rootViewController: rootVC)
+        
         window?.rootViewController = naVC
         return true
     }

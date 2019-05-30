@@ -45,8 +45,6 @@ class RootViewController: UIViewController {
     }
     
     
-    
-    
     //    MARK: - action
     @objc func clickedBtn(_ sender: UIButton) {
         
@@ -69,6 +67,7 @@ class RootViewController: UIViewController {
         }
         
         let player = HBPlayerViewController(url: url, autoPlay: false)
+        player.showControlToolsDurationTime = 5
         present(player, animated: true, completion: nil)
     }
     

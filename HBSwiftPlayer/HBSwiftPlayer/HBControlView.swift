@@ -14,21 +14,19 @@ class HBControlView: UIView {
         
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
-        addSubviews(playBtn, beginLbl, slider, endLbl)
+        addSubviews(playBtn, slider, timeLbl)
         playBtn.translatesAutoresizingMaskIntoConstraints = false
-        beginLbl.translatesAutoresizingMaskIntoConstraints = false
         slider.translatesAutoresizingMaskIntoConstraints = false
-        endLbl.translatesAutoresizingMaskIntoConstraints = false
+        timeLbl.translatesAutoresizingMaskIntoConstraints = false
         
-        let views = ["btn": playBtn, "b": beginLbl, "s": slider, "e": endLbl]
+        let views = ["btn": playBtn, "s": slider, "lbl": timeLbl]
         let metricsDic = ["bw": 40, "lw": 50]
         
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[btn(bw)]-|", options: .alignAllLeft, metrics: metricsDic, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[b]-|", options: .alignAllLeft, metrics: nil, views: views))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[s]-|", options: .alignAllLeft, metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[e]-|", options: .alignAllLeft, metrics: nil, views: views))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[btn(bw)]-[b]-[s]-[e(lw)]-|", options: .directionLeadingToTrailing, metrics: metricsDic, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[lbl]-|", options: .alignAllLeft, metrics: nil, views: views))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[btn(bw)]-[s]-[lbl]-|", options: .directionLeadingToTrailing, metrics: metricsDic, views: views))
 
     }
     
@@ -68,15 +66,7 @@ class HBControlView: UIView {
         return b
     }()
     
-    private lazy var beginLbl: UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .white
-        lbl.text = "00:00"
-        lbl.font = UIFont.systemFont(ofSize: 15)
-        return lbl
-    }()
-    
-    private lazy var endLbl: UILabel = {
+    private lazy var timeLbl: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
         lbl.text = "00:00"
@@ -113,9 +103,9 @@ class HBControlView: UIView {
     //    MARK:- Public
     var videoDuration: Float64 = 0 {
         willSet {
-            let str = timeStrWith(newValue)
-            endLbl.text = str
             slider.isEnabled = newValue > 0
+            
+            timeLbl.text = "00:00/\(timeStrWith(newValue))"
         }
     }
     
@@ -124,7 +114,7 @@ class HBControlView: UIView {
         
         let sValue =  time / videoDuration * 100
         slider.value = Float(sValue)
-        beginLbl.text = timeStrWith(time)
+        timeLbl.text = "\(timeStrWith(time))/\(videoDuration)"
         isPlayToEnd = false
     }
     

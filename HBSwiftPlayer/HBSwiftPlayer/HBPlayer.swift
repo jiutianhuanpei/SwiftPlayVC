@@ -12,20 +12,26 @@ import ObjectiveC
 
 /// 继承自 UINavigationController 显示导航栏
 class HBPlayerViewController: UINavigationController {
+    var showControlToolsDurationTime: TimeInterval {
+        willSet {
+            playVC.showControlToolsDurationTime = newValue
+        }
+    }
+    
+    private var playVC: _HBPlayerViewController
+    
+    
     init(url: URL, autoPlay: Bool = false) {
-
-        super.init(nibName: nil, bundle: nil)
-        
-        
-        var vc : _HBPlayerViewController
+        showControlToolsDurationTime = 0
         
         if autoPlay {
-            vc = _HBPlayerViewController(url: url, isAutoPlay: autoPlay)
+            playVC = _HBPlayerViewController(url: url, isAutoPlay: autoPlay)
         } else {
-            vc = _HBPlayerViewController(url: url)
+            playVC = _HBPlayerViewController(url: url)
         }
+        super.init(nibName: nil, bundle: nil)
         
-        addChild(vc)
+        addChild(playVC)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,8 +40,13 @@ class HBPlayerViewController: UINavigationController {
     override internal var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .landscapeRight
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
+    }
+    
     override internal var shouldAutorotate: Bool {
-        return false
+        return true
     }
 }
 
@@ -89,9 +100,7 @@ fileprivate class _HBPlayerViewController: UIViewController {
         self.addObserver()
         if isAutoPlay {
             navigationController?.isNavigationBarHidden = true
-            print("aaa:\(controlView)")
             view.layoutIfNeeded()
-            print("bbb:\(controlView)")
             controlBottom.constant = controlView.frame.height + 21
             playView.play()
             controlView.isPlaying = true
@@ -217,7 +226,7 @@ fileprivate extension _HBPlayerViewController {
                 
                 return TimeInterval(truncating: a)
             }
-            return 2
+            return 5
         }
     }
     
@@ -266,9 +275,7 @@ fileprivate extension _HBPlayerViewController {
         }) { _ in
             finished?()
         }
-        
     }
-    
 }
 
 // MARK: - 自动播放模块

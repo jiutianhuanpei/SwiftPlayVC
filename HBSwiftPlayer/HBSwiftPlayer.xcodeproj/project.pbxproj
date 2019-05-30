@@ -15,6 +15,7 @@
 		929358FA22997D6F004E96B5 /* HBPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929358F922997D6F004E96B5 /* HBPlayer.swift */; };
 		929358FE2299A094004E96B5 /* HBControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929358FD2299A094004E96B5 /* HBControlView.swift */; };
 		929359002299A4E3004E96B5 /* HBTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929358FF2299A4E3004E96B5 /* HBTools.swift */; };
+		92CD081E22A006B900912289 /* RootNaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD081D22A006B900912289 /* RootNaVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		929358F922997D6F004E96B5 /* HBPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBPlayer.swift; sourceTree = "<group>"; };
 		929358FD2299A094004E96B5 /* HBControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBControlView.swift; sourceTree = "<group>"; };
 		929358FF2299A4E3004E96B5 /* HBTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBTools.swift; sourceTree = "<group>"; };
+		92CD081D22A006B900912289 /* RootNaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNaVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				929358EA22997C9F004E96B5 /* AppDelegate.swift */,
+				92CD081D22A006B900912289 /* RootNaVC.swift */,
 				929358F722997CB7004E96B5 /* RootViewController.swift */,
 				929358F922997D6F004E96B5 /* HBPlayer.swift */,
 				92293DF9229BCF400012D39A /* HBPlayView.swift */,
@@ -146,6 +149,7 @@
 				929358F822997CB7004E96B5 /* RootViewController.swift in Sources */,
 				929358FA22997D6F004E96B5 /* HBPlayer.swift in Sources */,
 				929359002299A4E3004E96B5 /* HBTools.swift in Sources */,
+				92CD081E22A006B900912289 /* RootNaVC.swift in Sources */,
 				929358FE2299A094004E96B5 /* HBControlView.swift in Sources */,
 				92293DFA229BCF400012D39A /* HBPlayView.swift in Sources */,
 				929358EB22997C9F004E96B5 /* AppDelegate.swift in Sources */,
