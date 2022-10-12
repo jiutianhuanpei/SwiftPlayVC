@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-let videoUrlStr = "http://video.komect.com/upload/others/Sequence12.mp4"
+let videoUrlStr = "http://video.xxx.com/upload/others/Sequence12.mp4"
 
 class RootViewController: UIViewController {
     
